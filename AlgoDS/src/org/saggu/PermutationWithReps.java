@@ -2,7 +2,8 @@ package org.saggu;
 
 public class PermutationWithReps {
 
-	static char[] range = { 'a', 'b', 'c' };
+	//static char[] range = { 'a', 'b', 'c' };
+	
 	static int limit = 3;
 
 	public static void main(String[] args) {
@@ -17,8 +18,8 @@ public class PermutationWithReps {
 			System.out.println(new String(result));
 			return;
 		}
-		for (int i = 0; i < range.length; i++) {
-			result[index] = range[i];
+		for (int i = 0; i < 26; i++) {
+			result[index] = (char)('a'+i);
 			solve(result, index+1);
 		}
 	}
