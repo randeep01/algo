@@ -1,7 +1,7 @@
 package org.saggu;
 
 /**
- * Recursive Binary Search implementtion
+ * Recursive Binary Search implementation
  * 
  * @author randeepsaggu
  * 
