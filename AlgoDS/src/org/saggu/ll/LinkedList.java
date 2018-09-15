@@ -59,6 +59,28 @@ public class LinkedList<T> implements ListIterator<T> {
 		prev.next = temp.next;
 	}
 
+	public boolean insertAt(T data, int pos) {
+		if (start == null) {
+			return false;
+		}
+		int i = 1;
+		Node<T> temp = start;
+		while (temp != null) {
+			if (i == pos) {
+				break;
+			}
+			temp = temp.next;
+			i++;
+		}
+		if (temp == null)
+			return false;
+		Node<T> dta = new Node<>(data);
+		dta.next = temp.next;
+		temp.next = dta;
+		return true;
+
+	}
+
 	public static void main(String args[]) {
 		LinkedList<Integer> ll = new LinkedList<>();
 		ll.addFront(1);
@@ -73,9 +95,9 @@ public class LinkedList<T> implements ListIterator<T> {
 
 		}
 		System.out.println("---");
-		//System.out.println("---" + ll.removeFront());
-		//System.out.println("---" + ll.removeFront());
-ll.removeNode(2);
+		// System.out.println("---" + ll.removeFront());
+		// System.out.println("---" + ll.removeFront());
+		ll.insertAt(6, 2);
 		iter.init();
 		while (iter.hasNext() == true) {
 			System.out.println(iter.next().data);
