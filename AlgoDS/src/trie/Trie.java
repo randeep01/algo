@@ -45,7 +45,7 @@ public class Trie {
 			if (pCrawl.node[idx] == null) {
 				return false;
 			}
-
+			pCrawl = pCrawl.node[idx];
 		}
 		return (pCrawl != null && pCrawl.isEnd);
 	}
