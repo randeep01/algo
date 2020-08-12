@@ -64,5 +64,52 @@ public class Sorting
 	public boolean more(int val1,int val2){
 		return val1>val2;
 	}
+	public void mergeSort(int arr[], int tempArr[], int lowerIndex,int upperIndex)
+	{
+		if(lowerIndex>=upperIndex)
+		{
+			return;
+		}
+		int middleIndex = (lowerIndex + upperIndex)/2;
+		mergeSort(arr,tempArr,lowerIndex,middleIndex);
+		mergeSort(arr,tempArr,middleIndex+1,upperIndex);
+
+		//merge sort
+		int lowerStart = lowerIndex;
+		int lowerStop =  middleIndex;
+		int upperStart = middleIndex +1;
+		int upperStop = upperIndex;
+		int count = lowerIndex;
+
+		while(lowerStart <= lowerStop && upperStart <= upperStop){
+			if(arr[lowerStart] < arr[upperStart]){
+				tempArr[count++] = arr[lowerStart++];
+			} else {
+				tempArr[count++] = arr[upperStart++];
+			}
+		}
+		while(lowerStart<=lowerStop){
+			tempArr[count++] = arr[lowerStart++];
+		}
+		while(upperStart <= upperStop){
+			tempArr[count++] = arr[upperStart++];
+		}
+
+		for(int i = lowerIndex;i<= upperIndex;i++){
+			arr[i] = tempArr[i];
+		}
+	}
+	/**
+	 *	worst case time complexity o(nlogn)
+	 *	space o(n)
+	 *	stable yes
+	 *
+	 */
+	public void mergeSort(int arr[]){
+		int size  = arr.length;
+		int[] tempArr = new int[size];
+		mergeSort(arr,tempArr,0,size-1);
+	}
+
 }
 
