@@ -110,6 +110,37 @@ public class Sorting
 		int[] tempArr = new int[size];
 		mergeSort(arr,tempArr,0,size-1);
 	}
+	public void quickSort(int arr[], int lower, int upper)
+	{
+		if(upper<=lower){
+			return;
+		}
+		int pivot = arr[lower];
+		int start = lower;
+		int stop = upper;
+
+		while(lower<=upper)
+		{
+			while(arr[lower] <= pivot && lower < upper){
+				lower++;
+			}
+			while(arr[upper] > pivot && lower <= upper) {
+				upper --;
+			}
+			if(lower<upper){
+				swap(arr,upper,lower);
+			}
+		}
+		swap(arr,upper,start);
+		quickSort(arr,start,upper-1);
+		quickSort(arr,upper+1,stop);
+	}
+
+	public void quickSort(int arr[])
+	{
+		int size = arr.length;
+		quickSort(arr,0,size-1);
+	}
 
 }
 
